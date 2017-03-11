@@ -1,6 +1,6 @@
 import pymysql
 # from user import User
-
+import sys
 
 '''
 class User(db.Model):
@@ -31,6 +31,45 @@ def dbConnect():
     return db
 
 
+# Get a list of passwords with the associated email
+def dbFetchAll(db, email):
+    # Use the cursor as DictCursor
+    try:
+        with db.cursor(pymysql.cursors.DictCursor) as cursor:
+            # Read a single record
+            sql = "SELECT `password` \
+            FROM `users` WHERE `email`=%s"
+            cursor.execute(sql, (email))
+            result = cursor.fetchall()
+            for record in result:
+                print("Reading each record ==> {}".format(record),
+                      file=sys.stderr)
+            return result
+
+    except Exception as e:
+        print('Got error {!r}, errno is {}'.format(e, e.args[0]),
+              file=sys.stderr)
+
+
+# Get a single record from the database
+def dbFetchOne(db, email):
+    # Use the cursor as DictCursor
+    try:
+        with db.cursor(pymysql.cursors.DictCursor) as cursor:
+            # Read a single record
+            sql = "SELECT `FirstName`, `LastName`, `password`  \
+            FROM `users` WHERE `email`=%s"
+            cursor.execute(sql, email)
+            result = cursor.fetchone()
+
+            if ((result is None) or (result == "")):
+                return None
+            return result
+    except Exception as e:
+        print('Got error {!r}, errno is {}'.format(e, e.args[0]),
+              file=sys.stderr)
+
+
 # Insert to the database
 def dbInsert(db, User):
     firstName = User.firstName
@@ -59,13 +98,17 @@ def dbInsert(db, User):
             result = cursor.fetchall()
             for record in result:
                 print(record)
-    finally:
-        db.close()
+    except Exception as e:
+        print('Got error {!r}, errno is {}'.format(e, e.args[0]),
+              file=sys.stderr)
 
 
 '''
+Testing purposes
 connection = dbConnect()
+dbFetchAll(connection, "ganjewaronkar@gmail.com")
 customUser = User("onkar", "ganjewar", "webmaster@python.org",
                   "password")
+dbFetchOne(connection, "ypganjewar@gmail.com", "YOGESH")
 dbInsert(connection, customUser)
 '''
