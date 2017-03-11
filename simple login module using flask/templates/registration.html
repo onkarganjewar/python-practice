@@ -1,11 +1,18 @@
-{% extends "layout.html" %}
 {% block body %}
   <form action="" method=post class="form-horizontal">
     <h2>Sign up for Flask-Login Application </h2>
     <div class="control-group">
         <div class="controls">
-          <input type="text" id="username" name="username" class="input-xlarge"
-            placeholder="Enter Username" value="{{ request.form.username }}"
+          <input type="text" id="firstName" name="firstName" class="input-xlarge"
+            placeholder="Enter First Name" value="{{ request.form.firstName }}"
+            required>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <div class="controls">
+          <input type="text" id="lastName" name="lastName" class="input-xlarge"
+            placeholder="Enter Last Name" value="{{ request.form.lastName }}"
             required>
         </div>
     </div>
@@ -21,7 +28,7 @@
     <div class="control-group">
         <div class="controls">
           <input type="email" id="email" name="email" class="input-xlarge"
-            placeholder="Enter Email" value="{{ request.form.username }}"
+            placeholder="Enter Email" value="{{ request.form.email }}"
             required>
         </div>
     </div>

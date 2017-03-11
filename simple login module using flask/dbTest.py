@@ -1,5 +1,5 @@
 import pymysql
-from user import User
+# from user import User
 
 
 '''
@@ -63,7 +63,9 @@ def dbInsert(db, User):
         db.close()
 
 
+'''
 connection = dbConnect()
 customUser = User("onkar", "ganjewar", "webmaster@python.org",
                   "password")
 dbInsert(connection, customUser)
+'''

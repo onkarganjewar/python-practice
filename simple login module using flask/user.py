@@ -17,6 +17,7 @@ class User(object):
         self.firstName = firstName
         self.lastName = lastName
         self.email = email
+        # store the password hash instead in plain text
         self.set_password(password)
 
     def set_password(self, password):
