@@ -1,4 +1,4 @@
-# Video clip transformations using moviepy
+# Video clip transformations using moviepy python3
 # noqa: E402
 
 import imageio
