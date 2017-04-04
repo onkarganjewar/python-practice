@@ -34,7 +34,7 @@ print((('Image flips took {:.3f}s for '
 
 
 # Saves the frame at 1.2 sec
-# clip1.save_frame("D:\\SJSU\\295B\\Udacity\\CarND-LaneLines-P1-Submit\\
+# clip1.save_frame("D:\\Computer-Vision\\Python-Practice\\
 #                    video-frames\\frames1_2.jpeg", t=1.2) # Windows file path
 
 
